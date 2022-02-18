@@ -27,7 +27,7 @@ document.writeln(
 <p>Сума товарів(округлених в меншу сторону): ${Math.floor(potato) + Math.floor(cheese) + Math.floor(banana)}</p>
 <p>Сума товарів округлена до сотень: ${Math.round(sum/100)*100}</p>
 <p>Сума всіх товарів округлена в меншу сторону(${Math.floor(sum)}) парне число: ${Math.floor(sum) % 2 === 0}</p>
-<p>Сума решти приоплаті всіх товарів з 500: ${500 - sum}</p>
+<p>Сума решти при оплаті всіх товарів з 500: ${500 - sum}</p>
 <p>Середнє значення цін, округлене до другого знаку: ${((potato + cheese + banana) / 3).toFixed(2)}</p>
 <p>Повна вартість ${sum}, знижка ${discount}%(${(discount * sum) / 100}), до оплати: ${(sum - ((discount * sum) / 100))
     .toFixed(2)}</p>
