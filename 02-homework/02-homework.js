@@ -8,7 +8,7 @@ function getNumberFromPrompt(message) {
     do {
         str = prompt(message);
     } while (!str || str.trim() === '' || !Number.isInteger(Number(str)));
-    if (numberN && Number(str) <= numberN) {
+    if (typeof numberN === 'number' && Number(str) <= numberN) {
         alert('Число М повинно бути більшим за число N, N = ' + numberN);
         return getNumberFromPrompt(message);
     } else {
@@ -30,6 +30,6 @@ for (let i = numberN; i <= numberM; i++) {
 document.writeln(`Було введено: <ul> 
                                     <li>число N = ${numberN}</li>
                                     <li>число M = ${numberM}</li>
-                                    <li>Пропускати парні числа - ${missEvenNumbers}</li>
+                                    <li>пропускати парні числа - ${missEvenNumbers}</li>
                                 </ul>
                  Сума до виводу = ${sum}`);
