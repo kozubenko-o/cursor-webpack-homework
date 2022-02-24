@@ -1,4 +1,4 @@
-let numberOfFuncManually = +prompt('Чи бажаєте ввести дані конкретної функції?');
+let numberOfFuncManually = +prompt('Чи бажаєте ввести дані конкретної функції(введіть № ф-кції)?');
 
 function toEnterData(typeToEnter ,message, numberOfFunction, defaultData, emptyString) {
     if (numberOfFuncManually === numberOfFunction) {
@@ -15,7 +15,7 @@ function toEnterData(typeToEnter ,message, numberOfFunction, defaultData, emptyS
                 toNext = someData === '';
             }
         } while (toNext);
-        return someData
+        return someData;
     }
     return undefined;
 }
