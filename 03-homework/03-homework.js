@@ -177,41 +177,41 @@ document.writeln(
    `Function # 1: ${getMaxDigit(
         toEnterData(
             'number',
-            'дані для функції №', 
+            'число', 
             1, 
             1275.4651))}<br><br>
     Function # 2: ${getDegreeOfNumbers(
         toEnterData(
             'number',
-            'число-основу для функції №', 
+            'число-основу', 
             2, 
             4),
         toEnterData(
             'number',
-            'число-ступінь(буде округлено о меншого) для функції №', 
+            'число-ступінь(буде округлено о меншого)', 
             2, 
             5))}<br><br>
     Function # 3: ${changeFirstSymbolToUpperCase(
         toEnterData(
             'string', 
-            'дані для функції №', 
+            'дані', 
             3, 
             'some DATA', 
             false))}<br><br>
     Function # 4: ${calcNetSalary(
         toEnterData(
             'number', 
-            'з/п для функції №', 
+            'з/п', 
             4, 
             2000),
         toEnterData(
             'number', 
-            'основний податок для функції №', 
+            'основний податок', 
             4, 
             19),
         toEnterData(
             'number', 
-            'додатковий податок для функції №', 
+            'додатковий податок', 
             4, 
             2.5))}<br><br>
     Function # 5: ${getRandomIntInRange(
