@@ -1,8 +1,4 @@
-//let enterDataManually = confirm(`Бажаєте ввести всі дані вручну(краще відмовитись:-))?`);
 let numberOfFuncManually = +prompt('Чи бажаєте ввести дані конкретної функції?');
-/*if (!enterDataManually) {
-    numberOfFuncManually = +prompt('Чи бажаєте ввести дані конкретної функції?');
-}*/
 
 function toEnterData(typeToEnter ,message, numberOfFunction, defaultData, emptyString) {
     if (numberOfFuncManually === numberOfFunction) {
