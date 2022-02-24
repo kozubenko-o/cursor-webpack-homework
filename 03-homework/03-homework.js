@@ -163,6 +163,7 @@ function deleteDuplicateSymbol(string = 'Видалити символи, що �
                 counter++;
             }
             if (counter > 1) {
+                //Можна було б заюзати deleteSymbols(), якби ф-ція виводила результат без пояснення
                 resultString = resultString.toLowerCase().split(string[j].toLowerCase()).join('');
                 break;
             }
