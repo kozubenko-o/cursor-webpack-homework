@@ -45,6 +45,11 @@ function pairsMarks(pairsThemes) {
     }
     return result;
 }
+(function test() {
+    for (let i = 0; i < 200; i++) {
+        console.log(Math.floor(Math.random() * 5 + 1));
+    }
+})();
 
 
 console.log(studentsPairs(students));
