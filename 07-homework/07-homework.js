@@ -7,8 +7,6 @@ function getRandomArray(length, min, max) {
     // return Array(length).fill(0).map(() => getRandomNumber(min, max));
     // return [...Array(length)].map(() => getRandomNumber(min, max));
 }
-const randomArray = getRandomArray(21, 1, 18);
-
 
 function getModa(...numbers) {
     Array.isArray(numbers[0]) ? numbers = [...numbers[0]] : '';
@@ -94,41 +92,42 @@ function generateCombinations(word) {
     if (word.length <= 1) {
         return word;
     }
-    let result = word.toLowerCase().split('');
-    let factorial = result.reduce((res, el, index) => res * (index + 1), 1);
-    result = Array.from(Array(Math.floor(factorial)), () => {
-        result.map((el, index) => {
-            result.reduce((res, el1,index2) => {
-                if (index === index2) {
-                    return res;
-                } else {
-
+    let indexBoolean = [];
+    let result = [];
+    // debugger;
+    enumeration(word, indexBoolean, '');
+    function enumeration(initialValue, index, string) {
+        if (initialValue.length === string.length) {
+                return result.push(string);
+            } else {
+                for (let i = 0; i < initialValue.length; i++) {
+                    if (!index[i]) {
+                        index[i] = true;
+                        enumeration(initialValue, index, string + initialValue[i]);
+                        index[i] = false;
+                    }
                 }
-            }, '')
-        })
-    });
-    return factorial;
+            }
+    }
+    return result.filter((el, index) => result.indexOf(el) === index);
 }
-console.log('Масив рандомных чисел:  ', randomArray);
-console.log(`Мода масиву ${randomArray}:`);
-console.log(getModa(randomArray));
+
+const randomArray = getRandomArray(21, -9, 18);
+
+console.log('Масив рандомных чисел:   ', randomArray);
+console.log(`Мода масиву ${randomArray}:   ${getModa(randomArray)}`);
 //console.log(`Мода масиву 2,3.5,2,3.5,3.5,2.3,2.1,3.5:   ${getModa(2,3.5,2,3.5,3.5,2.3,2.1,3.5)}`);
-console.log(`Середнє арифметичне масиву ${randomArray}:   ${getAverage(randomArray).toFixed(2)}`);
+console.log(`Середнє арифметичне масиву ${randomArray}:    ${getAverage(randomArray).toFixed(2)}`);
 //console.log(`Середнє арифметичне масиву 2,2,2,2,2,2.3,2.1,3.5:   ${getAverage(2,2,2,2,2,2.3,2.1,3.5)}`);
 console.log(`Медіана масиву  ${randomArray}:   ${getMedian(randomArray)}`);
 //console.log(`Медіана масиву 2,1,15,2.5,2,3.2,2.2,2.1,2,12:   ${getMedian(2,1,15,2.5,2,3.2,2.2,2.1,2,12)}`);
 console.log(`Фільтрація парних чисел масиву ${randomArray}:   ${filterEvenNumbers(randomArray)}`);
 //console.log(`Фільтрація парних чисел масиву 2,1,15,2.5,2,3.2,2.2,2.1,2,12:   ${filterEvenNumbers(2,1,15,2.5,2,3.2,2.2,2.1,2,12)}`);
 console.log(`К-сть позитивних єлементів масиву ${randomArray}:   ${countPositiveNumbers(randomArray)}`);
-//console.log(`К-сть позитивних єлементів масиву -2,-1,-15,-2.5,2,-3.-2,2.-2,2,12:   ${countPositiveNumbers(-2,-1,-15,-2.5,2,-3.-2,2.-2,2,12)}`);
+//console.log(`К-сть позитивних єлементів масиву -2,-1,15,1,8,-2,2,-3,2,-2,2,12:   ${countPositiveNumbers(-2,-1,15,1,8,-2,2,-3,2,-2,2,12)}`);
 console.log(`${randomArray} // Діляться на ціло на 5:   ${getDividedByFive(randomArray)}`);
 console.log('Заміняємо погані слова: ' + replaceBadWords());
-console.log('Розбиваємо кожне слово на умовні склади по 3 букви: ' + divideByThree());
+console.log('Розбиваємо кожне слово на умовні склади по 3 букви(default "Live Commander"): ' + divideByThree());
+console.log('Всі можливі перестановки: ');
 console.log(generateCombinations('coffee'));
 
-1 2 3 4
-1 2 4 3
-1 4 3 2 
-4 2 3 1
-1 3 2 4
-3 2 1 4
