@@ -30,8 +30,7 @@ function getSubjects(student) {
 }
 
 function getAverageMark(student) {
-    let allMarks =
-    Object.values(student.subjects).flat();
+    let allMarks = Object.values(student.subjects).flat();
     return (allMarks.reduce((res, el) => res + el, 0) / allMarks.length).toFixed(2);
 }
 
