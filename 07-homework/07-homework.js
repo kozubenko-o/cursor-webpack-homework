@@ -8,13 +8,23 @@ function getRandomArray(length, min, max) {
     // return [...Array(length)].map(() => getRandomNumber(min, max));
 }
 
+function getArray(numbers) {
+    let numbersArr;
+    if (Array.isArray(numbers[0])) {
+        numbersArr = [...numbers[0]]
+    } else {
+        numbersArr = numbers;
+    }
+    return numbersArr;
+}
+
 function getModa(...numbers) {
-    Array.isArray(numbers[0]) ? numbers = [...numbers[0]] : '';
-    numbers = numbers.filter(el => Number.isInteger(el));
+    let numbersArr = getArray(numbers);
+    numbersArr = numbersArr.filter(el => Number.isInteger(el));
     let arr = [];
     let result = [];
-    numbers.forEach(el1 => {
-        arr.push(numbers.reduce((res, el2) => {
+    numbersArr.forEach(el1 => {
+        arr.push(numbersArr.reduce((res, el2) => {
             if (el1 === el2) res[1]++;
             return res;
         }, [el1, 0]));
@@ -27,36 +37,36 @@ function getModa(...numbers) {
 }
 
 function getAverage(...numbers) {
-    Array.isArray(numbers[0]) ? numbers = [...numbers[0]] : '';
-    numbers = numbers.reduce((res, el) => Number.isInteger(el) ? [res[0] + el, ++res[1]] : res, [0, 0]);
-    return numbers[0]/numbers[1];
+    let numbersArr = getArray(numbers);
+    numbersArr = numbersArr.reduce((res, el) => Number.isInteger(el) ? [res[0] + el, ++res[1]] : res, [0, 0]);
+    return numbersArr[0]/numbersArr[1];
 }
 
 function getMedian(...numbers) {
-    Array.isArray(numbers[0]) ? numbers = [...numbers[0]] : '';
-    numbers = numbers
+    let numbersArr = getArray(numbers);
+    numbersArr = numbersArr
         .filter(el => Number.isInteger(el))
         .sort((a, b) => a-b);
     let median;
-    numbers.length % 2 === 0
-        ? median = (numbers[numbers.length / 2 - 1] + numbers[numbers.length / 2]) / 2
-        : median = (numbers[Math.floor(numbers.length / 2)]);
+    numbersArr.length % 2 === 0
+        ? median = (numbersArr[numbersArr.length / 2 - 1] + numbersArr[numbersArr.length / 2]) / 2
+        : median = (numbersArr[Math.floor(numbersArr.length / 2)]);
     return median;
 }
 
 function filterEvenNumbers(...numbers) {
-    Array.isArray(numbers[0]) ? numbers = [...numbers[0]] : '';
-    return numbers.filter(el => el % 2 !== 0);
+    let numbersArr = getArray(numbers);
+    return numbersArr.filter(el => el % 2 !== 0);
 }
 
 function countPositiveNumbers(...numbers) {
-    Array.isArray(numbers[0]) ? numbers = [...numbers[0]] : '';
-    return numbers.reduce((res, el) => el > 0 ? ++res : res, 0);
+    let numbersArr = getArray(numbers);
+    return numbersArr.reduce((res, el) => el > 0 ? ++res : res, 0);
 }
 
 function getDividedByFive(...numbers) {
-    Array.isArray(numbers[0]) ? numbers = [...numbers[0]] : '';
-    return numbers.filter(el => el % 5 === 0);
+    let numbersArr = getArray(numbers);
+    return numbersArr.filter(el => el % 5 === 0);
 }
 
 function replaceBadWords(string = 'Holy shit! Are you fucking kidding? Fuck you!') {
