@@ -52,11 +52,9 @@ function getBestStudent(students) {
 function calculateWordLetters(word) {
     let result = {};
     for (let i = 0; i< word.length; i++) {
-        if (result[word[i].toLowerCase()]) {
-            result[word[i].toLowerCase()]++
-        } else {
-            result[word[i].toLowerCase()] = 1;
-        }
+        result[word[i].toLowerCase()]
+            ? result[word[i].toLowerCase()]++
+            : result[word[i].toLowerCase()] = 1;
     }
     return result;
 }
