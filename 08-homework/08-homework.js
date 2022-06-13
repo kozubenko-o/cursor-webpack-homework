@@ -30,8 +30,8 @@ function getSubjects(student) {
 }
 
 function getAverageMark(student) {
-    let allMarks = [];
-    Object.values(student.subjects).forEach(el => allMarks = allMarks.concat(el));
+    let allMarks =
+    Object.values(student.subjects).flat();
     return (allMarks.reduce((res, el) => res + el, 0) / allMarks.length).toFixed(2);
 }
 
@@ -42,11 +42,11 @@ function getStudentInfo(student) {
 }
 
 function getStudentsNames(students) {
-    return Object.values(students).map(el => el.name).sort();
+    return students.map(el => el.name).sort();
 }
 
 function getBestStudent(students) {
-    return Object.values(students).map(el => getStudentInfo(el))
+    return students.map(el => getStudentInfo(el))
             .reduce((res, el) => res.averageMark > el.averageMark? res : el).name;
 }
 
