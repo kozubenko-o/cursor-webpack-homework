@@ -2,6 +2,7 @@ function colorGenerate() {
     return `${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}`;
 }
 
+let isRecursion = false;
 let stopStart = false;
 
 function generateBlocks(heightTable = 5, widthTable = 5) {
@@ -28,6 +29,7 @@ function generateBlocks(heightTable = 5, widthTable = 5) {
 }
 
 function changeColorBlocks() {
+    isRecursion = true;
     const timeout = 1000
     if (stopStart) {
         stopRecursion();
@@ -49,7 +51,7 @@ function stopRecursion() {
 
 function generateBlocksInterval() {
     if (document.getElementById('table')) {
-        stopRecursion();
+        if (isRecursion) stopRecursion();
         document.getElementById('table').remove();
     }
     generateBlocks();
