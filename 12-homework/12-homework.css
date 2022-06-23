@@ -1,0 +1,93 @@
+body {
+    height: 98vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("images/background.jpg") 100% 100% no-repeat;
+    background-size: cover;
+}
+.text {
+    position: absolute;
+    top: 0;
+    left: 5vh;
+}
+.drum-kit {
+    position: relative;
+    background: url("images/drums.png");
+    background-size: cover;
+    width: 77vh;
+    height: 57vh;
+    top: 21vh;
+    right: -6vh;
+}
+.hit {
+    background: #4d29ed;
+}
+.kick {
+    position: absolute;
+    width: 10vh;
+    height: 10vh;
+    right: 33vh;
+    top: 32vh;
+    border-radius: 50px;
+}
+.snare {
+    position: absolute;
+    width: 12vh;
+    height: 6vh;
+    right: 42vh;
+    top: 22vh;
+    border-radius: 30px;
+    transform: rotate(11deg);
+}
+.tom1 {
+    position: absolute;
+    width: 8vh;
+    height: 6vh;
+    right: 40vh;
+    top: 13vh;
+    border-radius: 25px;
+}
+.tom2 {
+    position: absolute;
+    width: 10vh;
+    height: 4.5vh;
+    right: 26vh;
+    top: 12.5vh;
+    border-radius: 25px;
+}
+.floor-tom {
+    position: absolute;
+    width: 14vh;
+    height: 2.5vh;
+    right: 14vh;
+    top: 25.5vh;
+    border-radius: 25px;
+    transform: rotate(3deg);
+}
+.hi-het {
+    position: absolute;
+    width: 14vh;
+    height: 2vh;
+    right: 58vh;
+    top: 14.3vh;
+    border-radius: 25px;
+}
+.crash {
+    position: absolute;
+    width: 11vh;
+    height: 4vh;
+    right: 51vh;
+    top: 5vh;
+    border-radius: 25px;
+    transform: rotate(12deg);
+}
+.ride {
+    position: absolute;
+    width: 15vh;
+    height: 5vh;
+    right: 12vh;
+    top: 3vh;
+    border-radius: 25px;
+    transform: rotate(-11deg);
+}
