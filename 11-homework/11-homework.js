@@ -4,9 +4,14 @@ function colorGenerate() {
 
 let isRecursion = false;
 let stopStart = false;
+const timeout = 1000
 
 function generateBlocks(heightTable = 5, widthTable = 5) {
     if (document.getElementById('table')) {
+        if (isRecursion) {
+            stopRecursion();
+            setTimeout(() => stopRecursion(), timeout + 1);
+        }
         document.getElementById('table').remove();
     }
     const table = document.createElement('table');
@@ -30,7 +35,6 @@ function generateBlocks(heightTable = 5, widthTable = 5) {
 
 function changeColorBlocks() {
     isRecursion = true;
-    const timeout = 1000
     if (stopStart) {
         stopRecursion();
         setTimeout(() => '', timeout + 1);
