@@ -1,14 +1,10 @@
 let count = 0;
 
-function getDateNow() {
-    return Date.now();
-}
-
 function promiseReturn() {
     return new Promise((res, rej) => {
         setTimeout(() => {
-            const date = getDateNow().toString();
-            res(String.fromCharCode(getDateNow().toString().substr(date.length - 5)));
+            const date = Date.now().toString();
+            res(String.fromCharCode(date.substr(date.length - 5)));
         }, 50);
     });
 }

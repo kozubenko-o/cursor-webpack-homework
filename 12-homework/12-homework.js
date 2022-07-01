@@ -49,6 +49,7 @@ drums.forEach(d => {
     audio.setAttribute('src', `audio/${d.name}.wav`);
     el.className = d.name;
     el.setAttribute('key-play-div', d.keyCode);
+    el.style.cursor = 'pointer';
     drumKit.append(el);
     document.body.append(audio);
     textDiv.append(text);
