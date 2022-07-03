@@ -1,9 +1,13 @@
+body {
+    background: url("https://media.contentapi.ea.com/content/dam/eacom/en-us/migrated-images/2016/11/news-article-images-star-wars-goh-splash.jpg.adapt.crop16x9.575p.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
 .loader {
     left: 50%;
     top: 20%;
     width: 60px;
     height: 60px;
-    border: 3px solid #000;
+    border: 3px solid #fff;
     border-radius: 50%;
     display: inline-block;
     position: absolute;
@@ -37,12 +41,16 @@
     display: none;
 }
 
-#select-container {
+.select-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: center;
     align-items: center;
+}
+
+.button-container {
+    display: grid;
 }
 
 .button-info {
@@ -71,4 +79,66 @@
     color: white;
     transform: translateY(2px);
 }
-
+#table {
+    margin: auto;
+}
+.title {
+    text-align: center;
+    color: aqua;
+}
+#flexbox {
+    font: 25px sans-serif;
+    /*height: 150px;*/
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.gender {
+    width: 30px;
+    height: 30px;
+}
+.photo {
+    float: left;
+    width: 220px;
+    height: 325px;
+    padding-right: 10px;
+}
+.info {
+    border: solid 1px;
+    padding: 10px;
+    min-width: 350px;
+    background: #fff;
+}
+.next-prev {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #85f383;
+    color: black;
+    position: absolute;
+    border-radius: 40%;
+}
+.prev {
+    top: 22%;
+    left: 10%;
+}
+.next {
+    top: 22%;
+    right: 10%;
+}
+.next-prev:hover {
+    background-color: #1aab18;
+    color: black;
+}
+.cursor-pointer {
+    cursor: pointer;
+}
+.cursor-not {
+    background-color: #b2b4af !important;
+    cursor: not-allowed !important;
+}
+.cursor-not:hover {
+    background-color: #595c57 !important;
+}
