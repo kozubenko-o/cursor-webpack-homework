@@ -1,3 +1,11 @@
+const buttonBlock = document.createElement('button');
+const buttonBlockInterval = document.createElement('button');
+buttonBlock.className = 'atuin-btn';
+buttonBlockInterval.className = 'atuin-btn';
+buttonBlock.innerText = 'generate Blocks';
+buttonBlockInterval.innerText = 'generate Blocks Interval';
+document.body.append(buttonBlock, buttonBlockInterval);
+
 function colorGenerate() {
     return `${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}`;
 }
@@ -61,6 +69,9 @@ function generateBlocksInterval() {
     generateBlocks();
     changeColorBlocks();
 }
+
+buttonBlock.addEventListener('click', () => generateBlocks());
+buttonBlockInterval.addEventListener('click', () => generateBlocksInterval());
 
 
 
