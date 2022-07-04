@@ -11,6 +11,11 @@ const select = document.createElement('select');
 const selectText = document.createElement('div');
 const title = document.createElement('h1');
 selectText.style.color = 'aqua';
+selectText.style.fontSize = '30px';
+selectText.style.fontFamily = 'monospace';
+language.style.fontFamily = 'monospace';
+select.style.fontSize = '25px';
+select.style.width = '50px';
 for (let i = 0; i < 6; i++) {
     const option = document.createElement('option');
     option.innerHTML = i + 1;
@@ -37,7 +42,9 @@ document.body.append(selectContainer, loader, title, language);
 
 
 const BASE_URL = 'https://swapi.dev/api/';
+let lang = langEn;
 let LANG_URL_PART = '';
+let currentRequest;
 
 function hiddenLoader(isHidden) {
     isHidden ? loader.classList.add('hidden') : loader.classList.remove('hidden');
@@ -45,46 +52,78 @@ function hiddenLoader(isHidden) {
 
 function httpRequest(url) {
     return new Promise((resolve, reject) => {
-        const request = fetch(url);
+        const request = fetch(url).catch(err => reject(err));
         request.then((res) => resolve(res.json()));
     })
 }
 
-async function createFlexbox(array, titleText, button, filmUrl = '') {
+async function createFlexbox(film, button) {
+    if (!button) return;
+    currentRequest = button;
     if (document.getElementById('flexbox')) document.getElementById('flexbox').remove();
     title.innerHTML = '';
     const flexbox = document.createElement('div');
     flexbox.id = 'flexbox';
     let i = 0;
     if (button === buttonInformationCharacters) {
-        while (i < array.length) {
+        while (i < film.characters.length) {
             let character;
-            await httpRequest(array[`${i}`]).then(res => character = res);
+            const url = film.characters[`${i}`];
+            await httpRequest(url + LANG_URL_PART).then(res => character = res)
+                .catch(rej => {
+                    console.log(rej);
+                    i++;
+                    character = null;
+                });
+            if (!character) continue;
             const characterInfo = document.createElement('div');
             const photo = document.createElement('img');
+            const figure = document.createElement('figure');
+            const figcaption = document.createElement('figcaption');
             const gender = document.createElement('img');
             const information = document.createElement('span');
+            const arr = url.split('/');
+            const characterId = +arr[arr.length-2];
+            let genderName = character[`${lang.gender}`];
+            if (lang ===  langWk)
+            for (let key in lang) {
+                if (lang[key] === genderName){
+                    genderName = key;
+                    break;
+                }
+            }
             characterInfo.className = 'info';
             gender.className = 'gender';
             photo.className = 'photo';
-            photos.find(el => character.name === el.name)
-                ? photo.src = photos.find(el => character.name === el.name).url
+            photos.find(el => characterId === el.id)
+                ? photo.src = photos.find(el => characterId === el.id).url
                 : photo.src = 'images/empty-photo.png';
-            gender.src = `images/${character.gender.replace('/', '')}.png`;
-            information.innerHTML = `${character.name}<br>${character.birth_year}<br>`;
-            characterInfo.append(photo, information, gender);
+            gender.src = `images/${genderName.replace('/', '')}.png`;
+            information.innerHTML = lang.name + `: ${character[`${lang.name}`]}<br>` +
+                                    lang.birthYear + `: ${character[`${lang.birthYear}`]}<br>`
+            figure.append(photo);
+            figcaption.append(information, gender);
+            characterInfo.append(figure, figcaption);
             flexbox.append(characterInfo);
             i++;
         }
     }
     if (button === buttonInformationPlanets) {
-        while (i < array.length) {
+        while (i < film.planets.length) {
             let planet;
-            await httpRequest(array[`${i}`]).then(res => planet = res);
+            await httpRequest(film.planets[`${i}`] + LANG_URL_PART).then(res => planet = res).catch(rej => {
+                console.log(rej);
+                i++;
+                planet = null;
+            });
+            if (!planet) continue;
             const planetInfo = document.createElement('div');
             const information = document.createElement('span');
             planetInfo.className = 'info';
-            information.innerHTML = `Name: ${planet.name}<br>Climate: ${planet.climate}<br>Diameter: ${planet.diameter}<br>Population: ${planet.population}`
+            information.innerHTML = lang.name + `: ${planet[`${lang.name}`]}<br>` +
+                                    lang.climate + `: ${planet[`${lang.climate}`]}<br>` +
+                                    lang.diameter + `: ${planet[`${lang.diameter}`]}<br>` +
+                                    lang.population + `: ${planet[`${lang.diameter}`]}<br>`
             planetInfo.append(information);
             flexbox.append(planetInfo);
             i++;
@@ -95,7 +134,7 @@ async function createFlexbox(array, titleText, button, filmUrl = '') {
         buttonNext.innerHTML = 'next-->';
         buttonPrev.classList.add('prev', 'button-info');
         buttonPrev.innerHTML = '<--prev';
-        const filmNumberInDB = +filmUrl.substr(filmUrl.length - 2, 1);
+        const filmNumberInDB = +film.url.substr(film.url.length - 2, 1);
         console.log(filmNumberInDB);
         if (getEpisode(filmNumberInDB) === 1) {
             buttonPrev.disabled = true;
@@ -111,7 +150,7 @@ async function createFlexbox(array, titleText, button, filmUrl = '') {
             let prevEpisode;
             filmNumberInDB === 1 ? prevEpisode = 6 : prevEpisode = filmNumberInDB - 1;
             select.options.item(getEpisode(prevEpisode) - 1).selected = true;
-            await printPlanets(filmUrl.substr(0, filmUrl.length - 2) + prevEpisode);
+            await printInfo(film.url.substr(0, film.url.length - 2) + prevEpisode, buttonInformationPlanets);
             hiddenLoader(true);
         })
         buttonNext.addEventListener('click', async function () {
@@ -119,11 +158,11 @@ async function createFlexbox(array, titleText, button, filmUrl = '') {
             let nextEpisode;
             filmNumberInDB === 6 ? nextEpisode = 1 : nextEpisode = filmNumberInDB + 1;
             select.options.item(getEpisode(nextEpisode) - 1).selected = true;
-            await printPlanets(filmUrl.substr(0, filmUrl.length - 2) + nextEpisode);
+            await printInfo(film.url.substr(0, film.url.length - 2) + nextEpisode, buttonInformationPlanets);
             hiddenLoader(true);
         })
     }
-    title.innerHTML = titleText;
+    title.innerHTML = film.title;
     document.body.append(flexbox);
 
 }
@@ -137,24 +176,31 @@ async function getFilm(url) {
     return film;
 }
 
-async function printPlanets(url) {
+async function printInfo(url, button) {
+    hiddenLoader(false);
     const film = await getFilm(url);
-    await createFlexbox(film.planets, film.title, buttonInformationPlanets, film.url);
+    await createFlexbox(film, button).catch(err => {
+        console.log(err);
+        hiddenLoader(true);
+    });
+    hiddenLoader(true);
 }
 
 buttonInformationCharacters.addEventListener('click', async function() {
-    hiddenLoader(false);
-    const film = await getFilm(BASE_URL + 'films/' + getEpisode(+select.value));
-    await createFlexbox(film.characters, film.title, buttonInformationCharacters);
-    hiddenLoader(true);
+    await printInfo(BASE_URL + 'films/' + getEpisode(+select.value), buttonInformationCharacters);
 });
 
 buttonInformationPlanets.addEventListener('click', async function() {
-    hiddenLoader(false);
-    await printPlanets(BASE_URL + 'films/' + getEpisode(+select.value));
-    hiddenLoader(true);
+    await printInfo(BASE_URL + 'films/' + getEpisode(+select.value), buttonInformationPlanets);
 });
 
-language.addEventListener('change', function() {
-    language.value.toLowerCase() === 'wookiee' ? LANG_URL_PART = '?format=wookiee' : LANG_URL_PART = '';
+language.addEventListener('change', async function() {
+    if (language.value.toLowerCase() === 'wookiee') {
+        LANG_URL_PART = '?format=wookiee';
+        lang = langWk;
+    } else {
+        LANG_URL_PART = '';
+        lang = langEn;
+    }
+    await printInfo(BASE_URL + 'films/' + getEpisode(+select.value), currentRequest);
 });

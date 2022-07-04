@@ -105,7 +105,6 @@ body {
     height: 30px;
 }
 .photo {
-    float: left;
     width: 220px;
     height: 325px;
     padding-right: 10px;
@@ -113,8 +112,8 @@ body {
 .info {
     border: solid 1px;
     padding: 10px;
-    min-width: 350px;
-    background: #fff;
+    background: #4f6182;
+    font-family: 'Montserrat', sans-serif;
 }
 .next-prev {
     text-decoration: none;
@@ -151,4 +150,7 @@ body {
 }
 .cursor-not:hover {
     background-color: #595c57 !important;
+}
+figcaption {
+    display: inline-block;
 }

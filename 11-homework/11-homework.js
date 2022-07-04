@@ -48,13 +48,9 @@ function changeColorBlocks() {
         setTimeout(() => '', timeout + 1);
         return;
     }
-        const tbody = document.getElementById('tbody');
-        for (let i = 0; i < tbody.childNodes.length; i++) {
-            for (let j = 0; j < tbody.childNodes[i].childNodes.length; j++) {
-                tbody.childNodes[i].childNodes[j].style.background = `rgb(${colorGenerate()})`;
-            }
-        }
-        setTimeout(() => changeColorBlocks(), timeout);
+    const arrayTd = document.querySelectorAll('td');
+    arrayTd.forEach(td => td.style.background = `rgb(${colorGenerate()})`);
+    setTimeout(() => changeColorBlocks(), timeout);
 }
 
 function stopRecursion() {
