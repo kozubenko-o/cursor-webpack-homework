@@ -135,7 +135,6 @@ async function createFlexbox(film, button) {
         buttonPrev.classList.add('prev', 'button-info');
         buttonPrev.innerHTML = '<--prev';
         const filmNumberInDB = +film.url.substr(film.url.length - 2, 1);
-        console.log(filmNumberInDB);
         if (getEpisode(filmNumberInDB) === 1) {
             buttonPrev.disabled = true;
             buttonPrev.classList.add('cursor-not');
