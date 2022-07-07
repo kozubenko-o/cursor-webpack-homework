@@ -1,35 +1,35 @@
 const drums = [
     {
         name: 'kick',
-        keyCode: 'Numpad0'
+        keyCode: 'Space'
     },
     {
         name: 'snare',
-        keyCode: 'Numpad2'
+        keyCode: 'KeyN'
     },
     {
         name: 'tom1',
-        keyCode: 'Numpad5'
+        keyCode: 'KeyH'
     },
     {
         name: 'tom2',
-        keyCode: 'Numpad6'
+        keyCode: 'KeyJ'
     },
     {
         name: 'floor-tom',
-        keyCode: 'NumpadEnter'
+        keyCode: 'KeyM'
     },
     {
         name: 'hi-het',
-        keyCode: 'Numpad1'
+        keyCode: 'KeyF'
     },
     {
         name: 'crash',
-        keyCode: 'Numpad8'
+        keyCode: 'KeyU'
     },
     {
         name: 'ride',
-        keyCode: 'Numpad9'
+        keyCode: 'KeyI'
     }
 ]
 const textDiv = document.createElement('div');
@@ -63,6 +63,7 @@ drums.forEach(d => {
 
 
 document.addEventListener('keydown', function (event) {
+    console.log(event.code);
     const drumsElement = document.querySelector(`[key-play-div=${event.code}]`);
     const audioElement = document.querySelector(`[key-play-audio=${event.code}]`);
     drumsElement.classList.toggle('hit');
