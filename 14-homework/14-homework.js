@@ -1,14 +1,15 @@
+import {photos, langEn, langWk} from "./objects.js";
 
-const language = document.createElement('select');
+export const language = document.createElement('select');
 const languageEnglish = document.createElement('option');
 const languageWookiee = document.createElement('option');
-const buttonInformationCharacters = document.createElement('button');
-const buttonInformationPlanets = document.createElement('button');
+export const buttonInformationCharacters = document.createElement('button');
+export const buttonInformationPlanets = document.createElement('button');
 const buttonContainer = document.createElement('div');
 const loader = document.createElement('div');
 const selectContainer = document.createElement('div');
-const select = document.createElement('select');
-const selectText = document.createElement('div');
+export const select = document.createElement('select');
+export const selectText = document.createElement('div');
 const title = document.createElement('h1');
 selectText.style.color = 'aqua';
 selectText.style.fontSize = '30px';
@@ -41,16 +42,16 @@ selectContainer.append(buttonContainer, selectText, select);
 document.body.append(selectContainer, loader, title, language);
 
 
-const BASE_URL = 'https://swapi.dev/api/';
+export const BASE_URL = 'https://swapi.dev/api/';
 let lang = langEn;
 let LANG_URL_PART = '';
 let currentRequest;
 
-function hiddenLoader(isHidden) {
+export function hiddenLoader(isHidden) {
     isHidden ? loader.classList.add('hidden') : loader.classList.remove('hidden');
 }
 
-function httpRequest(url) {
+export function httpRequest(url) {
     return new Promise((resolve, reject) => {
         const request = fetch(url).catch(err => reject(err));
         request.then((res) => resolve(res.json()));

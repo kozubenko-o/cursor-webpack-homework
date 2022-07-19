@@ -1,4 +1,4 @@
-const buttonBlock = document.createElement('button');
+export const buttonBlock = document.createElement('button');
 const buttonBlockInterval = document.createElement('button');
 buttonBlock.className = 'atuin-btn';
 buttonBlockInterval.className = 'atuin-btn';

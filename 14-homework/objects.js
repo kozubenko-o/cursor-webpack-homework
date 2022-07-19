@@ -1,4 +1,4 @@
-const photos = [
+export const photos = [
     {
         id: 1,
         name: 'Luke Skywalker',
@@ -411,7 +411,7 @@ const photos = [
     }
 ];
 
-const langWk = {
+export const langWk = {
     name: 'whrascwo',
     birthYear: 'rhahrcaoac_roworarc',
     gender: 'rrwowhwaworc',
@@ -426,7 +426,7 @@ const langWk = {
     url: 'hurcan',
     title: 'aoahaoanwo'
 }
-const langEn = {
+export const langEn = {
     name: 'name',
     birthYear: 'birth_year',
     gender: 'gender',

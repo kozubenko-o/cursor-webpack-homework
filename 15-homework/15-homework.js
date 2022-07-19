@@ -1,7 +1,7 @@
-const span = document.createElement('span');
+export const span = document.createElement('span');
 const spanIdGenerate = document.createElement('span');
-const buttonFontUp = document.createElement('button');
-const buttonFontDown = document.createElement('button');
+export const buttonFontUp = document.createElement('button');
+export const buttonFontDown = document.createElement('button');
 const buttonNextId = document.createElement('button');
 buttonNextId.className = 'atuin-btn';
 buttonNextId.style.float = 'right';

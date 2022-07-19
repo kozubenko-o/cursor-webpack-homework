@@ -1,5 +1,10 @@
 
-class Student {
+export const buttonToPrintConsoleHW10 = document.createElement('button');
+buttonToPrintConsoleHW10.innerHTML = "Print console";
+document.body.append(buttonToPrintConsoleHW10);
+buttonToPrintConsoleHW10.addEventListener('click', () => toPrintConsole());
+
+export class Student {
     constructor(university, course, fullName, marks) {
         this.university = university;
         this.course = course;
@@ -37,7 +42,7 @@ class Student {
 }
 
 
-const mark = new Student(
+ export const mark = new Student(
     'Одеський політехнічний університет',
     2,
     'Марк Іванов',
@@ -63,14 +68,16 @@ const oleg = new BudgetStudent(
     [5, 4, 4, 5]
 );
 
-console.log(mark.getInfo());
-console.log(mark.getMarks);
-mark.setMark = 5;
-console.log(mark.getMarks);
-console.log(mark.getAverageMark());
-mark.dismiss();
-mark.setMark = 6;
-console.log(mark.getMarks);
-mark.recover();
-mark.setMark = 4;
-console.log(mark.getMarks);
+function toPrintConsole() {
+    console.log(mark.getInfo());
+    console.log(mark.getMarks);
+    mark.setMark = 5;
+    console.log(mark.getMarks);
+    console.log(mark.getAverageMark());
+    mark.dismiss();
+    mark.setMark = 6;
+    console.log(mark.getMarks);
+    mark.recover();
+    mark.setMark = 4;
+    console.log(mark.getMarks);
+}

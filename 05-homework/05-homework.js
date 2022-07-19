@@ -1,10 +1,15 @@
-const students = ['Олександр', 'Ігор', 'Олена', 'Іра', 'Олексій', 'Світлана'];
+export const buttonToPrintHW5 = document.createElement('button');
+buttonToPrintHW5.innerHTML = "Start";
+document.body.append(buttonToPrintHW5);
+buttonToPrintHW5.addEventListener('click', () => toPrint());
+
+export const students = ['Олександр', 'Ігор', 'Олена', 'Іра', 'Олексій', 'Світлана'];
 
 const themes = ['Диференційне рівняння', 'Теорія автоматів', 'Алгоритми і структури даних'];
 
 const marks = [4, 5, 5, 3, 4, 5];
 
-function studentsPairs(students) {
+export function studentsPairs(students) {
     let femaleNames = [];
     let maleNames = [];
     let result =[]
@@ -19,7 +24,6 @@ function studentsPairs(students) {
         result.push([maleNames[i], femaleNames[i]]);
     }
     return result;
-    //return [[students[0], students[2]], [students[1], students[3]], [students[4], students[5]]];
 }
 
 function pairsThemes(studentsPairs, themes) {
@@ -45,14 +49,10 @@ function pairsMarks(pairsThemes) {
     }
     return result;
 }
-(function test() {
-    for (let i = 0; i < 200; i++) {
-        console.log(Math.floor(Math.random() * 5 + 1));
-    }
-})();
 
-
-console.log(studentsPairs(students));
-console.log(pairsThemes(studentsPairs(students), themes));
-console.log(studentsMarks(students, marks));
-console.log(pairsMarks(pairsThemes(studentsPairs(students), themes)));
+function toPrint() {
+    console.log(studentsPairs(students));
+    console.log(pairsThemes(studentsPairs(students), themes));
+    console.log(studentsMarks(students, marks));
+    console.log(pairsMarks(pairsThemes(studentsPairs(students), themes)));
+}

@@ -1,6 +1,10 @@
-let numberOfFuncManually = +prompt('Чи бажаєте ввести дані конкретної функції(введіть № ф-кції)?');
+export const buttonStartHW3 = document.createElement('button');
+buttonStartHW3.innerHTML = "Start";
+document.body.append(buttonStartHW3);
+buttonStartHW3.addEventListener('click', () => start());
 
-function toEnterData(typeToEnter ,message, numberOfFunction, defaultData, emptyString) {
+
+function toEnterData(numberOfFuncManually, typeToEnter ,message, numberOfFunction, defaultData, emptyString) {
     if (numberOfFuncManually === numberOfFunction) {
         let someData;
         let toNext;
@@ -75,7 +79,7 @@ function getRandomIntInRange(numberFirst = 1, numberSecond = 10) {
 }
 
 //Function # 6
-function calcRepeatLetter(letter = 'а', word = 'Асталавіста') {
+export function calcRepeatLetter(letter = 'а', word = 'Асталавіста') {
     let countLetter = 0;
     for (let i = 0; i < word.length; i ++) {
         if (word[i].toLowerCase() === letter.toLowerCase()) {
@@ -173,117 +177,139 @@ function deleteDuplicateSymbol(string = 'Видалити символи, що �
     return `Зі строки "${string}" видаляємо символи, що повторюються: ${resultString}`;
 }
 
-document.writeln(
-   `Function # 1: ${getMaxDigit(
-        toEnterData(
-            'number',
-            'число', 
-            1, 
-            1275.4651))}<br><br>
+function start() {
+    const numberOfFuncManually = +prompt('Чи бажаєте ввести дані конкретної функції(введіть № ф-кції)?');
+
+    document.writeln(
+        `Function # 1: ${getMaxDigit(
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'число',
+                1,
+                1275.4651))}<br><br>
     Function # 2: ${getDegreeOfNumbers(
-        toEnterData(
-            'number',
-            'число-основу', 
-            2, 
-            4),
-        toEnterData(
-            'number',
-            'число-ступінь(буде округлено о меншого)', 
-            2, 
-            5))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'число-основу',
+                2,
+                4),
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'число-ступінь(буде округлено о меншого)',
+                2,
+                5))}<br><br>
     Function # 3: ${changeFirstSymbolToUpperCase(
-        toEnterData(
-            'string', 
-            'дані', 
-            3, 
-            'some DATA', 
-            false))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'дані',
+                3,
+                'some DATA',
+                false))}<br><br>
     Function # 4: ${calcNetSalary(
-        toEnterData(
-            'number', 
-            'з/п', 
-            4, 
-            2000),
-        toEnterData(
-            'number', 
-            'основний податок', 
-            4, 
-            19),
-        toEnterData(
-            'number', 
-            'додатковий податок', 
-            4, 
-            2.5))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'з/п',
+                4,
+                2000),
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'основний податок',
+                4,
+                19),
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'додатковий податок',
+                4,
+                2.5))}<br><br>
     Function # 5: ${getRandomIntInRange(
-        toEnterData(
-            'number', 
-            'перше ціле число діапазону(відбудеться округлення до меншого)', 
-            5, 
-            10),
-        toEnterData(
-            'number', 
-            'друге ціле число діапазону(відбудеться округлення до меншого)', 
-            5, 
-            50))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'перше ціле число діапазону(відбудеться округлення до меншого)',
+                5,
+                10),
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'друге ціле число діапазону(відбудеться округлення до меншого)',
+                5,
+                50))}<br><br>
     Function # 6: ${calcRepeatLetter(
-        toEnterData(
-            'string', 
-            'букву(символ) для розрахунків(можна ввести пробіл)', 
-            6, 
-            'в', 
-            true),
-        toEnterData(
-            'string', 
-            'слово або сторку', 
-            6,
-            'Вівальді', 
-            false))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'букву(символ) для розрахунків(можна ввести пробіл)',
+                6,
+                'в',
+                true),
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'слово або сторку',
+                6,
+                'Вівальді',
+                false))}<br><br>
     Function # 7: ${convertCurrency(
-        toEnterData(
-            'string', 
-            'суму для конвертації', 
-            7, 
-            '4000UAH', 
-            false),
-        toEnterData(
-            'number', 
-            'чому дорівнює 1$', 
-            7, 
-            30))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'суму для конвертації',
+                7,
+                '4000UAH',
+                false),
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'чому дорівнює 1$',
+                7,
+                30))}<br><br>
     Function # 8: ${getRandomPassword(
-        toEnterData(
-            'number', 
-            'кількість символів пароля(не ціле число буде округлено до меншого)', 
-            8, 
-            5))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'number',
+                'кількість символів пароля(не ціле число буде округлено до меншого)',
+                8,
+                5))}<br><br>
     Function # 9: ${deleteSymbols(
-        toEnterData(
-            'string', 
-            'букву/символ яка(ий) буде видалений зі слова/строки(можна ввести пробіл)', 
-            9, 
-            'о', 
-            true),
-        toEnterData(
-            'string', 
-            'слово/строку', 
-            9, 
-            'пропорційно', 
-            false))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'букву/символ яка(ий) буде видалений зі слова/строки(можна ввести пробіл)',
+                9,
+                'о',
+                true),
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'слово/строку',
+                9,
+                'пропорційно',
+                false))}<br><br>
     Function # 10: ${isPalindrome(
-        toEnterData(
-            'string', 
-            'слово/строку(перевірка на паліндром)', 
-            10, 
-            'Аргентина манит негра', 
-            false))}<br><br>
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'слово/строку(перевірка на паліндром)',
+                10,
+                'Аргентина манит негра',
+                false))}<br><br>
     Function # 11: ${deleteDuplicateSymbol(
-        toEnterData(
-            'string', 
-            'слово/строку', 
-            11, 
-            'Якась стрінга з якимись символами', 
-            false))}<br><br>`
-);
+            toEnterData(
+                numberOfFuncManually,
+                'string',
+                'слово/строку',
+                11,
+                'Якась стрінга з якимись символами',
+                false))}<br><br>`
+    );
+}
 
 
 

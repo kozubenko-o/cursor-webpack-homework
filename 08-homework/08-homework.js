@@ -1,3 +1,8 @@
+export const buttonToPrintConsoleHW8 = document.createElement('button');
+buttonToPrintConsoleHW8.innerHTML = "Print console";
+document.body.append(buttonToPrintConsoleHW8);
+buttonToPrintConsoleHW8.addEventListener('click', () => toPrintConsole());
+
 const students = [{
     name: "Tanya",
     course: 3,
@@ -49,7 +54,7 @@ function getBestStudent(students) {
             .reduce((res, el) => res.averageMark > el.averageMark? res : el).name;
 }
 
-function calculateWordLetters(word) {
+export function calculateWordLetters(word) {
     let result = {};
     for (let i = 0; i< word.length; i++) {
         result[word[i].toLowerCase()]
@@ -59,15 +64,17 @@ function calculateWordLetters(word) {
     return result;
 }
 
-console.log('Список предметів для конкретного студента:');
-console.log(getSubjects(students[0]));
-console.log('Оцінка по усім предметам для переданого студента:');
-console.log(getAverageMark(students[0]));
-console.log('Інформація загального виду по переданому студенту:');
-console.log(getStudentInfo(students[0]));
-console.log('Імена студентів у алфавітному порядку:');
-console.log(getStudentsNames(students));
-console.log('Кращий студент зі списку по показнику середньої оцінки:');
-console.log(getBestStudent(students));
-console.log("Об'єкт, в якому ключі це букви у слові, а значення – кількість їх повторень:");
-console.log(calculateWordLetters("test"));
+function toPrintConsole() {
+    console.log('Список предметів для конкретного студента:');
+    console.log(getSubjects(students[0]));
+    console.log('Оцінка по усім предметам для переданого студента:');
+    console.log(getAverageMark(students[0]));
+    console.log('Інформація загального виду по переданому студенту:');
+    console.log(getStudentInfo(students[0]));
+    console.log('Імена студентів у алфавітному порядку:');
+    console.log(getStudentsNames(students));
+    console.log('Кращий студент зі списку по показнику середньої оцінки:');
+    console.log(getBestStudent(students));
+    console.log("Об'єкт, в якому ключі це букви у слові, а значення – кількість їх повторень:");
+    console.log(calculateWordLetters("test"));
+}

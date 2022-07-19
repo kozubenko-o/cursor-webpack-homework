@@ -1,0 +1,33 @@
+.kick-17 {
+  position: absolute;
+  bottom: 0;
+  right: 37%;
+}
+.hit {
+  background: #4d29ed;
+}
+.kick {
+  position: absolute;
+  width: 20vh;
+  height: 20vh;
+  right: 86vh;
+  top: 70vh;
+  border-radius: 94px;
+  transform: rotateY(26deg);
+}
+.some-symbols {
+  position: absolute;
+  bottom: 50%;
+}
+#table {
+   margin: 0;
+}
+.info {
+  position: fixed;
+  right: 40%;
+  top: 0;
+}
+.loader {
+  z-index: 1!important;
+  border: 3px solid #000!important;
+}

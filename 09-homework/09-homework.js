@@ -1,4 +1,9 @@
-const ukraine = { tax: 0.195, middleSalary: 1789, vacancies: 11476 };
+export const buttonToPrintConsoleHW9 = document.createElement('button');
+buttonToPrintConsoleHW9.innerHTML = "Print console";
+document.body.append(buttonToPrintConsoleHW9);
+buttonToPrintConsoleHW9.addEventListener('click', () => toPrintConsole());
+
+export const ukraine = { tax: 0.195, middleSalary: 1789, vacancies: 11476 };
 
 const latvia = { tax: 0.25, middleSalary: 1586, vacancies: 3921 };
 
@@ -8,7 +13,7 @@ function getMyTaxes(salary) {
     return this.tax * salary;
 }
 
-function getMiddleTaxes() {
+export function getMiddleTaxes() {
     return this.tax * this.middleSalary;
 }
 
@@ -26,8 +31,9 @@ function getMySalary() {
     });
     setTimeout(() => getMySalary.call(this), 10000);
 }
-
-console.log(getMyTaxes.call(ukraine, 1000));
-console.log(getMiddleTaxes.call(latvia));
-console.log(getTotalTaxes.call(litva));
-getMySalary.call(ukraine);
+function toPrintConsole() {
+    console.log(getMyTaxes.call(ukraine, 1000));
+    console.log(getMiddleTaxes.call(latvia));
+    console.log(getTotalTaxes.call(litva));
+    getMySalary.call(ukraine);
+}
