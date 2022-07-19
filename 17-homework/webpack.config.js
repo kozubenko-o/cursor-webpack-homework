@@ -5,9 +5,8 @@ module.exports = {
     mode: "production",
     entry: path.resolve(__dirname, "src/index.js"),
     output: {
-        path: path.resolve(__dirname, "dist"),
-        filename: "bundle.js",
-        publicPath: '/assets'
+        path: path.resolve("dist"),
+        filename: "bundle.js"
     },
     devServer: {
         port: 4200,
