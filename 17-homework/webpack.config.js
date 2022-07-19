@@ -5,7 +5,7 @@ module.exports = {
     mode: "production",
     entry: path.resolve(__dirname, "src/index.js"),
     output: {
-        path: path.resolve("dist"),
+        path: path.resolve(__dirname, "dist"),
         filename: "bundle.js"
     },
     devServer: {
@@ -19,10 +19,7 @@ module.exports = {
         },
             {
                 test: /\.(png|jpe?g|gif|wav)$/i,
-                loader: 'file-loader',
-                options: {
-                    name: '[path][name].[ext]',
-                },
+                loader: 'file-loader'
             },
             {
                 test: /\.m?js$/,
